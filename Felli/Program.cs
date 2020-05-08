@@ -4,9 +4,13 @@ namespace Felli
 {
     class Program
     {
+        /// <summary>
+        /// Sole purpose is to create and start a new Game.
+        /// </summary>
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Game game = new Game();
+            game.Start();
         }
     }
 }
