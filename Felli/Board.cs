@@ -46,30 +46,55 @@ namespace Felli
 
         public Board()
         {
-            state = new State[5, 5];
+            // Creating a big board to fit the paths in-between
+            // playable positions
+            state = new State[9, 9];
             turn = 0;
             
-            // Setting playable area - All even/even and odd/odd positions 
-            //     have Black pieces in the first 2 lines and White pieces 
-            //     in the last 2 lines. All other positions are blocked with 
-            //     the exception of the middle one (2,2).
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < 5; j++)
+                for (int j = 0; j < 9; j++)
                 {
-                    if (i < 2 && i % 2 == 0 && j % 2 == 0 ||
-                        i < 2 && i % 2 != 0 && j % 2 != 0)
+                    // Black pieces on the top half of the board
+                    if (i == 0 && j % 4 == 0 || 
+                        i == 2 && j % 2 == 0 && j != 0 && j != 8)
                     {
                         state[i, j] = State.B; 
                     }
-                    else if (i > 2 && i % 2 == 0 && j % 2 == 0 ||
-                             i > 2 && i % 2 != 0 && j % 2 != 0)
+                    // White pieces on the bottom half of the board
+                    else if (i == 8 && j % 4 == 0 || 
+                             i == 6 && j % 2 == 0 && j != 0 && j != 8)
                     {
                         state[i, j] = State.W; 
                     }
-                    else if (i == 2 && j == 2)
+                    // Free middle spot 
+                    else if (i == 4 && j == 4)
                     {
                         state[i, j] = State.Empty; 
+                    }
+                    // Path Down 
+                    else if (i % 2 != 0 && j == 4)
+                    {
+                        state[i, j] = State.Down; 
+                    }
+                    // Path Side 
+                    else if ((i == 0 || i == 8) && j % 4 != 0 || 
+                             (i == 2 || i == 6) && (j == 3 || j == 5))
+                    {
+                        state[i, j] = State.Side; 
+                    }
+                    // Path Diagonal Top Left
+                    else if (i == j && i % 2 != 0)
+                    {
+                        state[i, j] = State.Left; 
+                    }
+                    // Path Diagonal Top Right
+                    else if (i == 1 && j == 7 || 
+                             i == 3 && j == 5 ||
+                             i == 5 && j == 3 ||
+                             i == 7 && j == 1)
+                    {
+                        state[i, j] = State.Right; 
                     }
                     else
                     {

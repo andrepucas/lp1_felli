@@ -8,31 +8,43 @@ namespace Felli
         {
            Console.WriteLine();
 
-           for (int i = 0; i < 5; i++)
+           for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < 5; j++)
+                for (int j = 0; j < 9; j++)
                 {
                     switch (b.GetState(new Position(i, j)))
                     {
-                        case State.W:
-                            Console.Write(" W ");
-                            break;
+                        // Playable Spots:
                         case State.B:
-                            Console.Write(" B ");
+                            Console.Write("[B]");
+                            break;
+                            case State.W:
+                            Console.Write("[W]");
                             break;
                         case State.Empty:
-                            Console.Write(" . ");
+                            Console.Write("[ ]");
+                            break;
+                        
+                        // Board Limits and Paths:
+                        case State.Down:
+                            Console.Write(" | ");
+                            break;
+                        case State.Side:
+                            Console.Write(" - ");
+                            break;
+                        case State.Left:
+                            Console.Write(" \\ ");
+                            break;
+                        case State.Right:
+                            Console.Write(" / ");
                             break;
                         case State.Blocked:
                             Console.Write("   ");
                             break;
                     }
-                    
                 }
                 Console.WriteLine("\n");
-                
             }
-            Console.WriteLine();
         }
     }
 }

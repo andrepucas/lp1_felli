@@ -2,12 +2,16 @@ namespace Felli
 {
     public enum State
     {
-        // PLayable States: Black, White and Empty
+        // Playable positions.
         B,
         W,
         Empty,
 
-        // Board Limits:
+        // Board limits and paths.
+        Down,
+        Side,
+        Left,
+        Right,
         Blocked
     }
 }
