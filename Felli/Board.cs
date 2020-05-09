@@ -3,7 +3,7 @@ namespace Felli
     public class Board
     {
         private State[,] state;
-        private int turn;
+        public int turn;
 
         public State NextTurn
         {
@@ -24,6 +24,16 @@ namespace Felli
             }
         }
 
+
+        public int Turn(int userTurn)
+        {
+
+            turn = ui.getTurn();
+
+        }
+
+
+
         public bool Over
         {
             get
@@ -31,7 +41,7 @@ namespace Felli
                 // Returns the player who won
                 return Winner != State.Empty;
             }
-            
+
         }
 
         public State Winner
@@ -50,56 +60,56 @@ namespace Felli
             // playable positions
             state = new State[9, 9];
             turn = 0;
-            
+
             for (int i = 0; i < 9; i++)
             {
                 for (int j = 0; j < 9; j++)
                 {
                     // Black pieces on the top half of the board
-                    if (i == 0 && j % 4 == 0 || 
+                    if (i == 0 && j % 4 == 0 ||
                         i == 2 && j % 2 == 0 && j != 0 && j != 8)
                     {
-                        state[i, j] = State.B; 
+                        state[i, j] = State.B;
                     }
                     // White pieces on the bottom half of the board
-                    else if (i == 8 && j % 4 == 0 || 
+                    else if (i == 8 && j % 4 == 0 ||
                              i == 6 && j % 2 == 0 && j != 0 && j != 8)
                     {
-                        state[i, j] = State.W; 
+                        state[i, j] = State.W;
                     }
                     // Free middle spot 
                     else if (i == 4 && j == 4)
                     {
-                        state[i, j] = State.Empty; 
+                        state[i, j] = State.Empty;
                     }
                     // Path Down 
                     else if (i % 2 != 0 && j == 4)
                     {
-                        state[i, j] = State.Down; 
+                        state[i, j] = State.Down;
                     }
                     // Path Side 
-                    else if ((i == 0 || i == 8) && j % 4 != 0 || 
+                    else if ((i == 0 || i == 8) && j % 4 != 0 ||
                              (i == 2 || i == 6) && (j == 3 || j == 5))
                     {
-                        state[i, j] = State.Side; 
+                        state[i, j] = State.Side;
                     }
                     // Path Diagonal Top Left
                     else if (i == j && i % 2 != 0)
                     {
-                        state[i, j] = State.Left; 
+                        state[i, j] = State.Left;
                     }
                     // Path Diagonal Top Right
-                    else if (i == 1 && j == 7 || 
+                    else if (i == 1 && j == 7 ||
                              i == 3 && j == 5 ||
                              i == 5 && j == 3 ||
                              i == 7 && j == 1)
                     {
-                        state[i, j] = State.Right; 
+                        state[i, j] = State.Right;
                     }
                     else
                     {
                         state[i, j] = State.Blocked;
-                    }     
+                    }
                 }
             }
         }

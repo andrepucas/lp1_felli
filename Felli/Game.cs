@@ -17,6 +17,10 @@ namespace Felli
         {
             while(!b.Over)
             {
+                int userTurn;
+        
+                userTurn = ui.getTurn();
+                Board.Turn(userTurn);
                 ui.ShowBoard(b);
 
                 // DEBUG: Serve só para parar o ciclo e ver board.
