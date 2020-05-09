@@ -18,7 +18,7 @@ namespace Felli
                         case State.B:
                             Console.Write("[B]");
                             break;
-                            case State.W:
+                        case State.W:
                             Console.Write("[W]");
                             break;
                         case State.Empty:
@@ -45,6 +45,18 @@ namespace Felli
                 }
                 Console.WriteLine("\n");
             }
+        }
+
+        public int PlayerMove(State playerTurn)
+        {
+            string aux;
+            int move;
+
+            Console.Write($"Player [{playerTurn}], which "
+            + "piece do you want to move: ");
+            aux = Console.ReadLine();
+            move = int.Parse(aux);
+            return move;
         }
     }
 }
