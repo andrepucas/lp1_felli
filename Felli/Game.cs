@@ -17,16 +17,24 @@ namespace Felli
         {
             while(!b.Over)
             {
-                int piece;
-                Position piecePos;
+                int button;
+                Position buttonPos;
 
                 // Prints board
                 ui.ShowBoard(b);
 
-                // Asks player what piece he wants to move
-                piece = ui.PlayerPicks(b.NextTurn);
-                piecePos = BoardPosition(piece);
+                // Asks player which button he wants to move
+                button = ui.PlayerPicks(b.NextTurn);
+                buttonPos = BoardPosition(button);
+
+                // Asks player where he wants to move it
+
+                // Moves button
             }
+
+            // Prints board
+
+            // Final Results
         }
 
         private Position BoardPosition(int newMove)

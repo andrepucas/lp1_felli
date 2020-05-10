@@ -47,13 +47,13 @@ namespace Felli
             }
         }
 
-        public int PlayerMove(State playerTurn)
+        public int PlayerPicks(State playerTurn)
         {
             string aux;
             int move;
 
-            Console.Write($"Player [{playerTurn}], which "
-            + "piece do you want to move: ");
+            Console.Write($"Player [{playerTurn}], select the "
+            + "position of the button you want to move: ");
             aux = Console.ReadLine();
             move = int.Parse(aux);
             return move;
