@@ -6,12 +6,17 @@ namespace Felli
     {
         public void ShowBoard(Board b)
         {
-           Console.WriteLine();
-
-           for (int i = 0; i < 9; i++)
+            Console.WriteLine("\n|||||||||||||||||||||||||||||||||||");
+            Console.WriteLine("||                               ||");
+            for (int i = 0; i < 9; i++)
             {
                 for (int j = 0; j < 9; j++)
                 {
+                    if (j == 0) 
+                    {
+                        Console.Write("||  ");
+                    }
+
                     switch (b.GetState(new Position(i, j)))
                     {
                         // Playable Spots:
@@ -24,7 +29,7 @@ namespace Felli
                         case State.Empty:
                             Console.Write("[ ]");
                             break;
-                        
+
                         // Board Limits and Paths:
                         case State.Down:
                             Console.Write(" | ");
@@ -43,7 +48,13 @@ namespace Felli
                             break;
                     }
                 }
-                Console.WriteLine("\n");
+                Console.WriteLine("  ||");
+                Console.WriteLine("||                               ||");
+            
+                if (i == 8)
+                {
+                    Console.WriteLine("|||||||||||||||||||||||||||||||||||\n");
+                }
             }
         }
 
