@@ -88,19 +88,19 @@ namespace Felli
             Console.WriteLine("\n\nWelcome to Felli!\n");
 
             Console.WriteLine("Instructions:");
-            Console.WriteLine("-Both player decide which color they want" + 
+            Console.WriteLine("-Both players decide which color they want" + 
             " and who goes first.");
-            Console.WriteLine("-Then the players take turn moving 1 piece " +
-            "at a time\n");
+            Console.WriteLine("-The players take turns moving 1 piece " +
+            "at a time.\n");
 
             Console.WriteLine("Valid moves:");
             Console.WriteLine("-In any direction where there is a free " + 
             "adjacent stop.");
-            Console.Write("-Jumping over an opponent's adjacent piece" + 
-            " and landing on a free stop, eleminating the opponent's piece.");
-            Console.WriteLine(
-            "However only 1 piece can be eliminated at a time");
-        
+            Console.WriteLine("-Jumping over an opponent's adjacent piece" + 
+            " and landing on a free stop, eliminating the opponent's piece. " +
+            "However only 1 piece can be eliminated at a time.");
+            
+            
         }
         
     }

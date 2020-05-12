@@ -15,12 +15,12 @@ namespace Felli
         
         public void Start()
         {
+            ui.intro();
+
             while(!b.Over)
             {
                 int piece;
                 Position piecePos;
-
-                ui.intro();
 
 
                 // Prints board
