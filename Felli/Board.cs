@@ -25,6 +25,15 @@ namespace Felli
         }
 
 
+        public int Turn(int userTurn)
+        {
+
+            turn = ui.getTurn();
+
+        }
+
+
+
         public bool Over
         {
             get
@@ -136,9 +145,5 @@ namespace Felli
             // DEBUG: Serve so para testar e dizer ao ciclo para continuar.
             return false;
         }
-
-    
-
-
     }
 }

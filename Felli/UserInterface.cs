@@ -84,6 +84,7 @@ namespace Felli
         
         public void intro()
         {
+            
 
             Console.WriteLine("\n\nWelcome to Felli!\n");
 
@@ -98,10 +99,68 @@ namespace Felli
             "adjacent stop.");
             Console.WriteLine("-Jumping over an opponent's adjacent piece" + 
             " and landing on a free stop, eliminating the opponent's piece. " +
-            "However only 1 piece can be eliminated at a time.");
-            
+            "However only 1 piece can be eliminated at a time."); 
             
         }
-        
+        public int getTurn()
+        {
+            string player1, answer;
+
+            while (true)
+            {
+
+                int userTurn;
+
+                Console.WriteLine("Choose which color you want to be?(B/W)");
+                player1 = Console.ReadLine();
+
+                Console.WriteLine("Do you want to be first?(Y/N)");
+                answer = Console.ReadLine();
+
+                if (player1 == "B" && answer == "N" ||
+                    player1 == "W" && answer == "Y")
+                {
+
+                    Console.WriteLine($"You chose [{player1}]");
+                    if (answer == "Y")
+                    {
+                        Console.WriteLine("and to be first.");
+                    }
+                    else if (answer == "N")
+                    {
+                        Console.WriteLine("and to be second.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid Input!");
+                    }
+
+                    return userTurn = 0;
+
+                }
+
+                else if (player1 == "B" && answer == "Y" ||
+                        player1 == "W" && answer == "N")
+                {
+
+                    Console.WriteLine($"You chose [{player1}]");
+                    if (answer == "Y")
+                    {
+                        Console.WriteLine("and to be first.");
+                    }
+                    else if (answer == "N")
+                    {
+                        Console.WriteLine("and to be second.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid Input!");
+                    }
+                    
+                    return userTurn = 1;
+                }
+
+            }
+        }
     }
 }

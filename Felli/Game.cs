@@ -24,6 +24,10 @@ namespace Felli
 
 
                 // Prints board
+                int userTurn;
+        
+                userTurn = ui.getTurn();
+                Board.Turn(userTurn);
                 ui.ShowBoard(b);
 
                 // Asks player which piece he wants to move
