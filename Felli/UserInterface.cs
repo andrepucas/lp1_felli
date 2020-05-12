@@ -4,6 +4,8 @@ namespace Felli
 {
     public class UserInterface
     {
+        // Draws board, the outside box and paths are fixed while the
+        // playable spots can change every time the board is rendered.
         public void ShowBoard(Board b)
         {
             Console.WriteLine("\n|||||||||||||||||||||||||||||||||||");
@@ -58,6 +60,8 @@ namespace Felli
             }
         }
 
+        // Asks the corresponding player and saves the position of 
+        // the button they input 
         public int PlayerPicks(State playerTurn)
         {
             string aux;
@@ -68,6 +72,12 @@ namespace Felli
             aux = Console.ReadLine();
             move = int.Parse(aux);
             return move;
+        }
+
+        // Renders the selected message to its origin
+        public void Message (string msg)
+        {
+            Console.WriteLine(msg);
         }
     }
 }

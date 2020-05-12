@@ -27,9 +27,23 @@ namespace Felli
                 button = ui.PlayerPicks(b.NextTurn);
                 buttonPos = BoardPosition(button);
 
-                // Asks player where he wants to move it
+                // Validates button
+                if (!b.ValidateButton(buttonPos))
+                {
+                    // Button not valid, end of cycle
+                    ui.Message("Invalid button. Pick one of your own.");
+                }
+                else
+                {
+                    ////// DEBUG LINE
+                    ui.Message("What now?");
+                    
+                    
+                    // Asks player where he wants to move it
 
-                // Moves button
+                    // Validates/makes move
+
+                }
             }
 
             // Prints board

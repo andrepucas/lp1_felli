@@ -109,6 +109,27 @@ namespace Felli
             return state[pos.Row, pos.Col];
         }
 
+        public bool ValidateButton(Position pos)
+        {
+            if (NextTurn == State.B)
+            {
+                if (pos == null) 
+                    return false;
+                if (state[pos.Row, pos.Col] != State.B)
+                    return false;
+            }
+            else if (NextTurn == State.W)
+            {
+                if (pos == null) 
+                    return false;
+                if (state[pos.Row, pos.Col] != State.W)
+                    return false;
+            }
+
+            state[pos.Row, pos.Col] = NextTurn;
+            return true;
+        }
+
         private bool hasWon(State player)
         {
             // DEBUG: Serve so para testar e dizer ao ciclo para continuar.
