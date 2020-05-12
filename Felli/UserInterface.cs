@@ -84,9 +84,12 @@ namespace Felli
         
         public void Intro()
         {
-            Console.WriteLine(
             
-            "\n\n  Welcome to Felli!\n\n" +
+            Console.Write(
+            
+            "\n\n  Welcome to Felli!\n" +
+
+            "        By Iniciados\n\n" +
 
             "Instructions:\n" +
             "  - Players decide which color they want and who goes first.\n" +
@@ -95,14 +98,14 @@ namespace Felli
             "Turns:\n" +
             "  - The player must first pick which piece he wants to grab.\n" +
             "  - If its a valid one, he can then choose where to move it.\n\n" +
-            
+    
             "Valid moves:\n" +
-            "  - In any direction where there is a free adjacent stop - [ ].\n" +
+            "  - In any direction where there is a free adjacent stop.\n" +
             "  - Jumping over an opponent's adjacent piece and landing\n" + 
             "    on a free stop, eliminating the opponent's piece.\n" +
             "  - Only one piece can be eliminated at a time.\n\n" +
 
-            "Type S to start\n");
+            "Type S to start: ");
 
             while (true)
             {
@@ -125,6 +128,64 @@ namespace Felli
             $"TURN  {turn}   ||");
             Console.WriteLine("||               ||              ||");
             Console.WriteLine("|||||||||||||||||||||||||||||||||||");
+        }
+        public int getTurn()
+        {
+
+            while (true)
+            {
+
+                Console.Write("\nChoose a color to play as (B/W): ");
+                string aux1 = Console.ReadLine();
+                string player1 = aux1.ToUpper();
+                
+                Console.Write("\nDo you want to go first (Y/N): ");
+                string aux2 = Console.ReadLine();
+                string answer = aux2.ToUpper();
+
+                if (player1 == "B" && answer == "N" ||
+                    player1 == "W" && answer == "Y")
+                {
+                    Console.Write($"\nYou chose [{player1}] ");
+
+                    if (answer == "Y")
+                    {
+                        Console.WriteLine("and to be first.");
+                    }
+                    else if (answer == "N")
+                    {
+                        Console.WriteLine("and to be second.");
+                    }
+
+                    return 0;
+
+                }               
+
+                else if (player1 == "B" && answer == "Y" ||
+                        player1 == "W" && answer == "N")
+                {
+                    Console.Write($"\nYou chose [{player1}] ");
+                    
+                    if (answer == "Y")
+                    {
+                        Console.WriteLine("and to be first.");
+                    }
+                    else if (answer == "N")
+                    {
+                        Console.WriteLine("and to be second.");
+                    }
+
+                    return 1;
+                }
+
+                else
+                {
+                    Console.WriteLine("\nInvalid Inputs!");
+                }
+                    
+                 
+
+            }
         }
     }
 }

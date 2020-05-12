@@ -15,7 +15,7 @@ namespace Felli
         
         public void Start()
         {
-            ui.Message("\n\n\n\n");
+            b.turn = ui.getTurn();
 
             while(!b.Over)
             {
