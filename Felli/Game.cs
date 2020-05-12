@@ -15,15 +15,15 @@ namespace Felli
         
         public void Start()
         {
-            ui.intro();
+            ui.Message("\n\n\n\n");
 
             while(!b.Over)
             {
                 int piece;
                 Position piecePos;
 
-
-                // Prints board
+                // Prints round info and board
+                ui.NewRoundMsg(b.turn, b.NextTurn);
                 ui.ShowBoard(b);
 
                 // Asks player which piece he wants to move
@@ -34,7 +34,8 @@ namespace Felli
                 if (!b.ValidatePiece(piecePos))
                 {
                     // Piece not valid, cycle restarts
-                    ui.Message("Invalid choice. Pick one of your own pieces.");
+                    ui.Message("Invalid choice. You can only grab your " +
+                    "own pieces.");
                 }
                 else
                 {
@@ -50,6 +51,7 @@ namespace Felli
             }
 
             // Prints board
+            ui.ShowBoard(b);
 
             // Final Results
         }

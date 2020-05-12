@@ -68,8 +68,8 @@ namespace Felli
             string aux;
             int move;
 
-            Console.Write($"Player [{playerTurn}], select the "
-            + "position of the piece you want to move: ");
+            Console.Write($"Player {playerTurn}, select the "
+            + "position of the piece you want to grab: ");
             aux = Console.ReadLine();
             move = int.Parse(aux);
             return move;
@@ -82,26 +82,49 @@ namespace Felli
             Console.WriteLine(msg);
         }
         
-        public void intro()
+        public void Intro()
         {
-
-            Console.WriteLine("\n\nWelcome to Felli!\n");
-
-            Console.WriteLine("Instructions:");
-            Console.WriteLine("-Both players decide which color they want" + 
-            " and who goes first.");
-            Console.WriteLine("-The players take turns moving 1 piece " +
-            "at a time.\n");
-
-            Console.WriteLine("Valid moves:");
-            Console.WriteLine("-In any direction where there is a free " + 
-            "adjacent stop.");
-            Console.WriteLine("-Jumping over an opponent's adjacent piece" + 
-            " and landing on a free stop, eliminating the opponent's piece. " +
-            "However only 1 piece can be eliminated at a time.");
+            Console.WriteLine(
             
+            "\n\n  Welcome to Felli!\n\n" +
+
+            "Instructions:\n" +
+            "  - Players decide which color they want and who goes first.\n" +
+            "  - The players take turns moving one piece at a time.\n\n" +
+
+            "Turns:\n" +
+            "  - The player must first pick which piece he wants to grab.\n" +
+            "  - If its a valid one, he can then choose where to move it.\n\n" +
             
+            "Valid moves:\n" +
+            "  - In any direction where there is a free adjacent stop - [ ].\n" +
+            "  - Jumping over an opponent's adjacent piece and landing\n" + 
+            "    on a free stop, eliminating the opponent's piece.\n" +
+            "  - Only one piece can be eliminated at a time.\n\n" +
+
+            "Type S to start\n");
+
+            while (true)
+            {
+                // Input variables
+                string str = Console.ReadLine();
+                string input = str.ToLower();
+
+                if (input == "s")
+                {
+                    break;
+                }
+            }
         }
-        
+
+        public void NewRoundMsg(int turn, State PlayerTurn)
+        {
+            Console.WriteLine("\n|||||||||||||||||||||||||||||||||||");
+            Console.WriteLine("||               ||              ||");
+            Console.WriteLine($"||   PLAYER  {PlayerTurn}   ||    " + 
+            $"TURN  {turn}   ||");
+            Console.WriteLine("||               ||              ||");
+            Console.WriteLine("|||||||||||||||||||||||||||||||||||");
+        }
     }
 }

@@ -24,7 +24,6 @@ namespace Felli
             }
         }
 
-
         public bool Over
         {
             get
@@ -32,7 +31,6 @@ namespace Felli
                 // Returns the player who won
                 return Winner != State.Empty;
             }
-
         }
 
         public State Winner
@@ -136,9 +134,5 @@ namespace Felli
             // DEBUG: Serve so para testar e dizer ao ciclo para continuar.
             return false;
         }
-
-    
-
-
     }
 }
