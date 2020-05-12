@@ -25,15 +25,6 @@ namespace Felli
         }
 
 
-        public int Turn(int userTurn)
-        {
-
-            turn = ui.getTurn();
-
-        }
-
-
-
         public bool Over
         {
             get
@@ -41,7 +32,6 @@ namespace Felli
                 // Returns the player who won
                 return Winner != State.Empty;
             }
-
         }
 
         public State Winner
