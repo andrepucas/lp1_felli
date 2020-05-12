@@ -20,6 +20,9 @@ namespace Felli
                 int piece;
                 Position piecePos;
 
+                ui.intro();
+
+
                 // Prints board
                 ui.ShowBoard(b);
 
