@@ -17,26 +17,26 @@ namespace Felli
         {
             while(!b.Over)
             {
-                int button;
-                Position buttonPos;
+                int piece;
+                Position piecePos;
 
                 // Prints board
                 ui.ShowBoard(b);
 
-                // Asks player which button he wants to move
-                button = ui.PlayerPicks(b.NextTurn);
-                buttonPos = BoardPosition(button);
+                // Asks player which piece he wants to move
+                piece = ui.PlayerPicks(b.NextTurn);
+                piecePos = BoardPosition(piece);
 
-                // Validates button
-                if (!b.ValidateButton(buttonPos))
+                // Validates piece
+                if (!b.ValidatePiece(piecePos))
                 {
-                    // Button not valid, end of cycle
-                    ui.Message("Invalid button. Pick one of your own.");
+                    // Piece not valid, cycle restarts
+                    ui.Message("Invalid choice. Pick one of your own pieces.");
                 }
                 else
                 {
                     ////// DEBUG LINE
-                    ui.Message("What now?");
+                    ui.Message("Piece Validated.");
                     
                     
                     // Asks player where he wants to move it

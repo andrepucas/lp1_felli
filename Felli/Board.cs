@@ -109,7 +109,7 @@ namespace Felli
             return state[pos.Row, pos.Col];
         }
 
-        public bool ValidateButton(Position pos)
+        public bool ValidatePiece(Position pos)
         {
             if (NextTurn == State.B)
             {
