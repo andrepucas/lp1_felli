@@ -25,12 +25,10 @@ namespace Felli
         }
 
 
-        public int Turn(int userTurn)
-        {
-
-            turn = ui.getTurn();
-
-        }
+        // public void Turn(int userTurn)
+        // {
+        //     turn = ui.getTurn.userTurn;
+        // }
 
 
 
@@ -124,5 +122,9 @@ namespace Felli
             // DEBUG: Serve so para testar e dizer ao ciclo para continuar.
             return false;
         }
+
+    
+
+
     }
 }
