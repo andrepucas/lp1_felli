@@ -12,7 +12,7 @@ namespace Felli
             b = new Board();
             ui = new UserInterface();
         }
-        
+
         public void Start()
         {
             // "Console.Clear()"
@@ -25,9 +25,9 @@ namespace Felli
             b.turn = ui.GetTurn();
 
             // Game Loop
-            while(!b.Over)
+            while (!b.Over)
             {
-                int piece, moveTo;
+                int pieceRef, moveToRef;
                 Position piecePos, movePos;
 
                 // Prints round info and board
@@ -35,8 +35,8 @@ namespace Felli
                 ui.ShowBoard(b);
 
                 // Asks player which piece he wants to move
-                piece = ui.PlayerPicks(b.NextTurn);
-                piecePos = BoardPosition(piece);
+                pieceRef = ui.PlayerPicks(b.NextTurn);
+                piecePos = BoardPosition(pieceRef);
 
                 // Validates piece
                 if (!b.ValidatePiece(piecePos))
@@ -48,16 +48,19 @@ namespace Felli
                 else
                 {
                     // Asks player where he wants to move it
-                    moveTo = ui.PlayerMoves(piece, b.NextTurn);
-                    movePos = BoardPosition(moveTo);
-                    
-                    /////// DEBUG LINES
-                    Console.WriteLine($"Piece picked: {piece}");
-                    Console.WriteLine($"Moving to: {moveTo}");
+                    moveToRef = ui.PlayerMoves(pieceRef, b.NextTurn);
+                    movePos = BoardPosition(moveToRef);
 
                     // Validates/makes move
-                    if (!b.ValidateMove(piecePos, movePos))
-                    {   
+                    if (b.ValidateMove(piecePos, movePos, pieceRef, moveToRef))
+                    {
+                        // Feedback on moved piece.
+                        ui.Message($"||  [Player {b.NextTurn}] has moved piece " +
+                        $"{pieceRef} to position {moveToRef}");
+                        b.turn++;
+                    }
+                    else
+                    {
                         // Move not valid, cycle restarts
                         ui.Message("||  Invalid move. Try again");
                     }
@@ -70,24 +73,24 @@ namespace Felli
             // Final Results
         }
 
-        private Position BoardPosition(int newMove)
+        private Position BoardPosition(int reference)
         {
-            switch (newMove)
+            switch (reference)
             {
-                case 1:     return new Position(0, 0);
-                case 2:     return new Position(0, 4);
-                case 3:     return new Position(0, 8);
-                case 4:     return new Position(2, 2);
-                case 5:     return new Position(2, 4);
-                case 6:     return new Position(2, 6);
-                case 7:     return new Position(4, 4);
-                case 8:     return new Position(6, 2);
-                case 9:     return new Position(6, 4);
-                case 10:    return new Position(6, 6);
-                case 11:    return new Position(8, 0);
-                case 12:    return new Position(8, 4);
-                case 13:    return new Position(8, 8);
-                default:    return null;
+                case 1: return new Position(0, 0);
+                case 2: return new Position(0, 4);
+                case 3: return new Position(0, 8);
+                case 4: return new Position(2, 2);
+                case 5: return new Position(2, 4);
+                case 6: return new Position(2, 6);
+                case 7: return new Position(4, 4);
+                case 8: return new Position(6, 2);
+                case 9: return new Position(6, 4);
+                case 10: return new Position(6, 6);
+                case 11: return new Position(8, 0);
+                case 12: return new Position(8, 4);
+                case 13: return new Position(8, 8);
+                default: return null;
             }
         }
     }

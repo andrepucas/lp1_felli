@@ -14,7 +14,7 @@ namespace Felli
             {
                 for (int j = 0; j < 9; j++)
                 {
-                    if (j == 0) 
+                    if (j == 0)
                     {
                         Console.Write("||  ");
                     }
@@ -52,7 +52,7 @@ namespace Felli
                 }
                 Console.WriteLine("  ||");
                 Console.WriteLine("||                               ||");
-            
+
                 if (i == 8)
                 {
                     Console.WriteLine("|||||||||||||||||||||||||||||||||||\n");
@@ -88,15 +88,15 @@ namespace Felli
         }
 
         // Renders the selected message to its origin
-        public void Message (string msg)
+        public void Message(string msg)
         {
             Console.WriteLine();
             Console.WriteLine(msg);
         }
-        
+
         public void Intro()
         {
-            Console.WriteLine("\n\n");
+            Console.WriteLine("\n");
             Console.WriteLine("||||||||||||||||||||||||||||||||||||||||||||||");
             Console.WriteLine("||                                          ||");
             Console.WriteLine("||          Felli! - by Iniciados           ||");
@@ -149,7 +149,7 @@ namespace Felli
         {
             Console.WriteLine("\n|||||||||||||||||||||||||||||||||||");
             Console.WriteLine("||              |||              ||");
-            Console.WriteLine($"||   PLAYER  {PlayerTurn}  |||    " + 
+            Console.WriteLine($"||   PLAYER  {PlayerTurn}  |||    " +
             $"TURN  {turn}   ||");
             Console.WriteLine("||              |||              ||");
             Console.WriteLine("|||||||||||||||||||||||||||||||||||");
@@ -163,7 +163,7 @@ namespace Felli
                 Console.Write("||  Player 1, pick a color to play as (B/W): ");
                 string aux1 = Console.ReadLine();
                 string player1 = aux1.ToUpper();
-                
+
                 Console.Write("\n||  Who is going first? (P1/P2): ");
                 string aux2 = Console.ReadLine();
                 string answer = aux2.ToUpper();
@@ -176,33 +176,33 @@ namespace Felli
 
                     if (answer == "P1")
                     {
-                        Console.WriteLine("and is going to play first.  ||");
+                        Console.WriteLine("and is going to play first.");
                     }
                     else if (answer == "P2")
                     {
-                        Console.WriteLine("and is going to play second.  ||");
+                        Console.WriteLine("and is going to play second.");
                     }
                     return 0;
-                }               
+                }
 
                 else if (player1 == "B" && answer == "P1" ||
                          player1 == "W" && answer == "P2")
                 {
                     Console.Write("\n\n");
                     Console.Write($"||  Player 1 is now [Player {player1}] ");
-                    
+
                     if (answer == "P1")
                     {
-                        Console.WriteLine("and is going to play first.  ||");
+                        Console.WriteLine("and is going to play first.");
                     }
                     else if (answer == "P2")
                     {
-                        Console.WriteLine("and is going to play second.  ||");
+                        Console.WriteLine("and is going to play second.");
                     }
                     return 1;
                 }
 
-                else 
+                else
                 {
                     Console.WriteLine("\n||  At least one of those inputs is " +
                     "not valid. Try again");
