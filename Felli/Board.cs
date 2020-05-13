@@ -38,8 +38,8 @@ namespace Felli
         {
             get
             {
-                if (hasWon(State.W)) return State.W;
-                if (hasWon(State.B)) return State.B;
+                if (HasWon(State.W)) return State.W;
+                if (HasWon(State.B)) return State.B;
                 return State.Empty;
             }
         }
@@ -150,10 +150,28 @@ namespace Felli
             return true;
         }
 
-        private bool hasWon(State player)
-        {
-            // DEBUG: Serve so para testar e dizer ao ciclo para continuar.
+        private bool HasWon(State player)
+        {   
+            int countEnemy = 0;
+
+            for (int i = 0; i < 9; i++)
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    if (player == State.W && state[i, j] == State.B)
+                    {
+                        countEnemy++;
+                    }
+
+                    else if (player == State.B && state[i, j] == State.W)
+                    {
+                        countEnemy++;
+                    }
+                             
+                }      
+            }  
+            if (countEnemy == 0) return true;
             return false;
         }
     }
-}
+} 
