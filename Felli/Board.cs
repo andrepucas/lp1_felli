@@ -111,7 +111,25 @@ namespace Felli
 
         private bool HasWon(State player)
         {
-            // DEBUG: Serve so para testar e dizer ao ciclo para continuar.
+            int countEnemy = 0;
+
+            for (int i = 0; i < 9; i++)
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    if (player == State.W && state[i, j] == State.B)
+                    {
+                        countEnemy++;
+                    }
+
+                    else if (player == State.B && state[i, j] == State.W)
+                    {
+                        countEnemy++;
+                    }
+                             
+                }      
+            }  
+            if (countEnemy == 0) return true;
             return false;
         }
 
