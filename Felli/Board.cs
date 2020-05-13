@@ -9,27 +9,16 @@ namespace Felli
         {
             get
             {
-                if (Over)
-                {
-                    return State.Empty;
-                }
-                else if (turn % 2 == 0)
-                {
-                    return State.W;
-                }
-                else
-                {
-                    return State.B;
-                }
+                if (turn % 2 == 0) return State.W;
+                else return State.B;
             }
         }
-
 
         public bool Over
         {
             get
             {
-                // Returns the player who won
+                // While != this will return true and the game continues
                 return Winner != State.Empty;
             }
         }
@@ -42,6 +31,30 @@ namespace Felli
                 if (HasWon(State.B)) return State.B;
                 return State.Empty;
             }
+        }
+
+        private bool HasWon(State player)
+        {
+            int countEnemy = 0;
+
+            for (int i = 0; i < 9; i++)
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    if (player == State.W && state[i, j] == State.B)
+                    {
+                        countEnemy++;
+                    }
+
+                    else if (player == State.B && state[i, j] == State.W)
+                    {
+                        countEnemy++;
+                    }
+                             
+                }      
+            }  
+            if (countEnemy == 0) return true;
+            return false;
         }
 
         public Board()
@@ -109,30 +122,6 @@ namespace Felli
             return state[pos.Row, pos.Col];
         }
 
-        private bool HasWon(State player)
-        {
-            int countEnemy = 0;
-
-            for (int i = 0; i < 9; i++)
-            {
-                for (int j = 0; j < 9; j++)
-                {
-                    if (player == State.W && state[i, j] == State.B)
-                    {
-                        countEnemy++;
-                    }
-
-                    else if (player == State.B && state[i, j] == State.W)
-                    {
-                        countEnemy++;
-                    }
-                             
-                }      
-            }  
-            if (countEnemy == 0) return true;
-            return false;
-        }
-
         public bool ValidatePiece(Position pos1)
         {
             if (NextTurn == State.B)
@@ -167,7 +156,6 @@ namespace Felli
             {
                 state[pos1.Row, pos1.Col] = State.Empty;
                 state[pos2.Row, pos2.Col] = NextTurn;
-                //turn++;
                 return true;
             }
             // [Player X] jumping over [Player X] and vice-versa.
@@ -183,7 +171,6 @@ namespace Felli
                 state[pos3.Row, pos3.Col] = State.Empty;
                 state[pos1.Row, pos1.Col] = State.Empty;
                 state[pos2.Row, pos2.Col] = NextTurn;
-                //turn++;
                 return true;
             }
             // Cant move outside of board limits

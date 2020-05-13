@@ -149,8 +149,17 @@ namespace Felli
         {
             Console.WriteLine("\n|||||||||||||||||||||||||||||||||||");
             Console.WriteLine("||              |||              ||");
-            Console.WriteLine($"||   PLAYER  {PlayerTurn}  |||    " +
-            $"TURN  {turn}   ||");
+            // Fixes box misalignment when the turns go over one digits
+            if (turn < 10) 
+            {
+                Console.WriteLine($"||   PLAYER  {PlayerTurn}  |||    " +
+                                  $"TURN  {turn}   ||");
+            }
+            else
+            {
+                Console.WriteLine($"||   PLAYER  {PlayerTurn}  |||    " +
+                                  $"TURN  {turn}  ||");
+            }
             Console.WriteLine("||              |||              ||");
             Console.WriteLine("|||||||||||||||||||||||||||||||||||");
         }
@@ -160,11 +169,13 @@ namespace Felli
             while (true)
             {
                 Console.Write("\n\n");
-                Console.Write("||  Player 1, pick a color to play as (B/W): ");
+                Console.Write("||  [Player 1], pick a color to " + 
+                "play as (B/W): ");
                 string aux1 = Console.ReadLine();
                 string player1 = aux1.ToUpper();
 
-                Console.Write("\n||  Who is going first? (P1/P2): ");
+                Console.Write("\n||  [Player 1/2], " + 
+                "which of you is going first? (P1/P2): ");
                 string aux2 = Console.ReadLine();
                 string answer = aux2.ToUpper();
 
@@ -172,7 +183,7 @@ namespace Felli
                     player1 == "W" && answer == "P1")
                 {
                     Console.Write("\n\n");
-                    Console.Write($"||  Player 1 is now [Player {player1}] ");
+                    Console.Write($"||  [Player 1] is now [Player {player1}] ");
 
                     if (answer == "P1")
                     {
@@ -189,7 +200,7 @@ namespace Felli
                          player1 == "W" && answer == "P2")
                 {
                     Console.Write("\n\n");
-                    Console.Write($"||  Player 1 is now [Player {player1}] ");
+                    Console.Write($"||  [Player 1] is now [Player {player1}] ");
 
                     if (answer == "P1")
                     {

@@ -55,8 +55,9 @@ namespace Felli
                     if (b.ValidateMove(piecePos, movePos, pieceRef, moveToRef))
                     {   
                         // Feedback on moved piece.
-                        ui.Message($"||  [Player {b.NextTurn}] has moved piece " +
-                        $"{pieceRef} to position {moveToRef}");
+                        ui.Message($"||  [Player {b.NextTurn}] has moved " +
+                        $"piece from {pieceRef} to {moveToRef}");
+
                         b.turn++;
                     }
                     else
