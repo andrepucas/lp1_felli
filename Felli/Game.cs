@@ -27,8 +27,8 @@ namespace Felli
             // Game Loop
             while(!b.Over)
             {
-                int piece;
-                Position piecePos;
+                int piece, moveTo;
+                Position piecePos, movePos;
 
                 // Prints round info and board
                 ui.NewRoundMsg(b.turn, b.NextTurn);
@@ -43,17 +43,24 @@ namespace Felli
                 {
                     // Piece not valid, cycle restarts
                     ui.Message("||  Invalid choice. You can only grab your " +
-                    "own pieces.");
+                    "own pieces. Try again");
                 }
                 else
                 {
-                    ////// DEBUG LINE
-                    ui.Message("||  Piece Validated.");
-                    
                     // Asks player where he wants to move it
+                    moveTo = ui.PlayerMoves(piece, b.NextTurn);
+                    movePos = BoardPosition(moveTo);
+                    
+                    /////// DEBUG LINES
+                    Console.WriteLine($"Piece picked: {piece}");
+                    Console.WriteLine($"Moving to: {moveTo}");
 
                     // Validates/makes move
-
+                    if (!b.ValidateMove(piecePos, movePos))
+                    {   
+                        // Move not valid, cycle restarts
+                        ui.Message("||  Invalid move. Try again");
+                    }
                 }
             }
 

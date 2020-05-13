@@ -125,8 +125,28 @@ namespace Felli
                 if (state[pos.Row, pos.Col] != State.W)
                     return false;
             }
+            return true;
+        }
 
-            state[pos.Row, pos.Col] = NextTurn;
+        public bool ValidateMove(Position pos1, Position pos2)
+        {
+            if (NextTurn == State.B)
+            {
+                if (pos2 == null) 
+                    return false;
+                if (state[pos2.Row, pos2.Col] != State.Empty)
+                    return false;
+                if (state[pos2.Row, pos2.Col] == state[pos1.Row, pos1.Col])
+                    return false;
+            }
+            else if (NextTurn == State.W)
+            {
+                //copypaste
+            }
+
+            state[pos1.Row, pos1.Col] = State.Empty;
+            state[pos2.Row, pos2.Col] = NextTurn;
+            turn++;
             return true;
         }
 

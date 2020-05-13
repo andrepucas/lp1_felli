@@ -69,7 +69,19 @@ namespace Felli
             int move;
 
             Console.Write($"||  [Player {playerTurn}], select the "
-            + "position of the piece you want to grab: ");
+            + "position of the piece you want to grab (1-13): ");
+            aux = Console.ReadLine();
+            move = int.Parse(aux);
+            return move;
+        }
+
+        public int PlayerMoves(int pos, State playerTurn)
+        {
+            string aux;
+            int move;
+
+            Console.Write($"\n||  [Player {playerTurn}], select where you want "
+            + $"to move [{playerTurn}-{pos}] on the board (1-13): ");
             aux = Console.ReadLine();
             move = int.Parse(aux);
             return move;
@@ -164,11 +176,11 @@ namespace Felli
 
                     if (answer == "P1")
                     {
-                        Console.WriteLine("and is going to play first.");
+                        Console.WriteLine("and is going to play first.  ||");
                     }
                     else if (answer == "P2")
                     {
-                        Console.WriteLine("and is going to play second.");
+                        Console.WriteLine("and is going to play second.  ||");
                     }
                     return 0;
                 }               
@@ -181,11 +193,11 @@ namespace Felli
                     
                     if (answer == "P1")
                     {
-                        Console.WriteLine("and is going to play first.");
+                        Console.WriteLine("and is going to play first.  ||");
                     }
                     else if (answer == "P2")
                     {
-                        Console.WriteLine("and is going to play second.");
+                        Console.WriteLine("and is going to play second.  ||");
                     }
                     return 1;
                 }
