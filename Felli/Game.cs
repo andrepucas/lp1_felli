@@ -15,8 +15,16 @@ namespace Felli
         
         public void Start()
         {
-            b.turn = ui.getTurn();
+            // "Console.Clear()"
+            ui.Message("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            ui.Message("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            ui.Message("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 
+            // Method that asks the players what colors and turns they want.
+            // Returns an integer 'turn' value (0/1) depending on the results.
+            b.turn = ui.GetTurn();
+
+            // Game Loop
             while(!b.Over)
             {
                 int piece;
@@ -34,14 +42,13 @@ namespace Felli
                 if (!b.ValidatePiece(piecePos))
                 {
                     // Piece not valid, cycle restarts
-                    ui.Message("Invalid choice. You can only grab your " +
+                    ui.Message("||  Invalid choice. You can only grab your " +
                     "own pieces.");
                 }
                 else
                 {
                     ////// DEBUG LINE
-                    ui.Message("Piece Validated.");
-                    
+                    ui.Message("||  Piece Validated.");
                     
                     // Asks player where he wants to move it
 

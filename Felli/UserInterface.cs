@@ -68,7 +68,7 @@ namespace Felli
             string aux;
             int move;
 
-            Console.Write($"Player {playerTurn}, select the "
+            Console.Write($"||  [Player {playerTurn}], select the "
             + "position of the piece you want to grab: ");
             aux = Console.ReadLine();
             move = int.Parse(aux);
@@ -84,28 +84,41 @@ namespace Felli
         
         public void Intro()
         {
-            
-            Console.Write(
-            
-            "\n\n  Welcome to Felli!\n" +
-
-            "        By Iniciados\n\n" +
-
-            "Instructions:\n" +
-            "  - Players decide which color they want and who goes first.\n" +
-            "  - The players take turns moving one piece at a time.\n\n" +
-
-            "Turns:\n" +
-            "  - The player must first pick which piece he wants to grab.\n" +
-            "  - If its a valid one, he can then choose where to move it.\n\n" +
-    
-            "Valid moves:\n" +
-            "  - In any direction where there is a free adjacent stop.\n" +
-            "  - Jumping over an opponent's adjacent piece and landing\n" + 
-            "    on a free stop, eliminating the opponent's piece.\n" +
-            "  - Only one piece can be eliminated at a time.\n\n" +
-
-            "Type S to start: ");
+            Console.WriteLine("\n\n");
+            Console.WriteLine("||||||||||||||||||||||||||||||||||||||||||||||");
+            Console.WriteLine("||                                          ||");
+            Console.WriteLine("||          Felli! - by Iniciados           ||");
+            Console.WriteLine("||                                          ||");
+            Console.WriteLine("||||||||||||||||||||||||||||||||||||||||||||||");
+            Console.WriteLine();
+            Console.WriteLine("||||||||||||||||||||||||||||||||||||||||||||||");
+            Console.WriteLine("||                                          ||");
+            Console.WriteLine("||  Instructions:                           ||");
+            Console.WriteLine("||                                          ||");
+            Console.WriteLine("||  - Players decide which color they want  ||");
+            Console.WriteLine("||    and who goes first.                   ||");
+            Console.WriteLine("||  - Players take turns moving one piece   ||");
+            Console.WriteLine("||    at a time.                            ||");
+            Console.WriteLine("||                                          ||");
+            Console.WriteLine("||  Turns:                                  ||");
+            Console.WriteLine("||                                          ||");
+            Console.WriteLine("||  - The player must first pick which      ||");
+            Console.WriteLine("||    piece he wants to grab.               ||");
+            Console.WriteLine("||  - If its a valid one, he can then       ||");
+            Console.WriteLine("||    choose where to move it.              ||");
+            Console.WriteLine("||                                          ||");
+            Console.WriteLine("||  Valid moves:                            ||");
+            Console.WriteLine("||                                          ||");
+            Console.WriteLine("||  - In any direction where there is a     ||");
+            Console.WriteLine("||    free adjacent stop.                   ||");
+            Console.WriteLine("||  - Jumping over an opponent's adjacent   ||");
+            Console.WriteLine("||    piece and landing on a free spot,     ||");
+            Console.WriteLine("||    eliminating the opponent's piece.     ||");
+            Console.WriteLine("||  - Only one piece can be eliminated at   ||");
+            Console.WriteLine("||    a time                                ||");
+            Console.WriteLine("||                                          ||");
+            Console.WriteLine("||||||||||||||||||||||||||||||||||||||||||||||");
+            Console.Write("\n||  Type S to start: ");
 
             while (true)
             {
@@ -123,68 +136,65 @@ namespace Felli
         public void NewRoundMsg(int turn, State PlayerTurn)
         {
             Console.WriteLine("\n|||||||||||||||||||||||||||||||||||");
-            Console.WriteLine("||               ||              ||");
-            Console.WriteLine($"||   PLAYER  {PlayerTurn}   ||    " + 
+            Console.WriteLine("||              |||              ||");
+            Console.WriteLine($"||   PLAYER  {PlayerTurn}  |||    " + 
             $"TURN  {turn}   ||");
-            Console.WriteLine("||               ||              ||");
+            Console.WriteLine("||              |||              ||");
             Console.WriteLine("|||||||||||||||||||||||||||||||||||");
         }
-        public int getTurn()
+        public int GetTurn()
         {
 
             while (true)
             {
-
-                Console.Write("\nChoose a color to play as (B/W): ");
+                Console.Write("\n\n");
+                Console.Write("||  Player 1, pick a color to play as (B/W): ");
                 string aux1 = Console.ReadLine();
                 string player1 = aux1.ToUpper();
                 
-                Console.Write("\nDo you want to go first (Y/N): ");
+                Console.Write("\n||  Who is going first? (P1/P2): ");
                 string aux2 = Console.ReadLine();
                 string answer = aux2.ToUpper();
 
-                if (player1 == "B" && answer == "N" ||
-                    player1 == "W" && answer == "Y")
+                if (player1 == "B" && answer == "P2" ||
+                    player1 == "W" && answer == "P1")
                 {
-                    Console.Write($"\nYou chose [{player1}] ");
+                    Console.Write("\n\n");
+                    Console.Write($"||  Player 1 is now [Player {player1}] ");
 
-                    if (answer == "Y")
+                    if (answer == "P1")
                     {
-                        Console.WriteLine("and to be first.");
+                        Console.WriteLine("and is going to play first.");
                     }
-                    else if (answer == "N")
+                    else if (answer == "P2")
                     {
-                        Console.WriteLine("and to be second.");
+                        Console.WriteLine("and is going to play second.");
                     }
-
                     return 0;
-
                 }               
 
-                else if (player1 == "B" && answer == "Y" ||
-                        player1 == "W" && answer == "N")
+                else if (player1 == "B" && answer == "P1" ||
+                         player1 == "W" && answer == "P2")
                 {
-                    Console.Write($"\nYou chose [{player1}] ");
+                    Console.Write("\n\n");
+                    Console.Write($"||  Player 1 is now [Player {player1}] ");
                     
-                    if (answer == "Y")
+                    if (answer == "P1")
                     {
-                        Console.WriteLine("and to be first.");
+                        Console.WriteLine("and is going to play first.");
                     }
-                    else if (answer == "N")
+                    else if (answer == "P2")
                     {
-                        Console.WriteLine("and to be second.");
+                        Console.WriteLine("and is going to play second.");
                     }
-
                     return 1;
                 }
 
-                else
+                else 
                 {
-                    Console.WriteLine("\nInvalid Inputs!");
+                    Console.WriteLine("\n||  At least one of those inputs is " +
+                    "not valid. Try again");
                 }
-                    
-                 
-
             }
         }
     }
