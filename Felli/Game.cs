@@ -67,11 +67,9 @@ namespace Felli
                     }
                 }
             }
-
-            // Prints board
+            //Prints results and board
+            ui.WinBox(b.Winner, b.turn);
             ui.ShowBoard(b);
-
-            // Final Results
         }
 
         private Position BoardPosition(int reference)

@@ -44,13 +44,13 @@ namespace Felli
                     if (player == State.W && state[i, j] == State.B)
                     {
                         countEnemy++;
+                        return true;
                     }
 
                     else if (player == State.B && state[i, j] == State.W)
                     {
                         countEnemy++;
-                    }
-                             
+                    } 
                 }      
             }  
             if (countEnemy == 0) return true;

@@ -220,5 +220,15 @@ namespace Felli
                 }
             }
         }
+        public void WinBox(State Winner, int turns)
+        {
+            Console.WriteLine("\n|||||||||||||||||||||||||||||||||||");
+            Console.WriteLine("||                               ||");
+            Console.WriteLine($"||         PLAYER {Winner} WINS         ||");
+            Console.WriteLine("||                               ||");
+            Console.WriteLine($"||       ONLY TOOK {turns} TURNS       ||");
+            Console.WriteLine("||                               ||");
+            Console.WriteLine("|||||||||||||||||||||||||||||||||||");
+        }
     }
 }
