@@ -25,8 +25,6 @@ Este [repositório] é composto pelos seguintes elementos:
 |README                 |README                 |README                 |
 |Documentação XML       |Comentários para XML   |UML                    |
 
-</br>
-
 **Nota:** A tabela representada em cima não reflete na totalidade a divisão do
  trabalho, uma vez que na maior parte do tempo estávamos a trabalhar em
  colaboração através da partilha de ecrã no Discord.
