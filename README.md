@@ -60,6 +60,8 @@ Por fim, o game loop termina quando um jogador ficar sem peças, sendo dada a
 
 ### Diagrama UML
 
+![UML](UML.png "UML")
+
 ### Referências
 
 * [TictacToeV2 - Nuno Fachada]
