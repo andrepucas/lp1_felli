@@ -2,10 +2,14 @@
 
 namespace Felli
 {
+    /// <summary>
+    /// Main <c>Program</c> Class.
+    /// Contains a single method that redirects the players.
+    /// </summary>
     class Program
     {
         /// <summary>
-        /// Directs the players to the intro screen and starts the game.
+        /// Calls in the intro screen, followed by the game loop (Start).
         /// </summary>
         static void Main(string[] args)
         {   

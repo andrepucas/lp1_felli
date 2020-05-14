@@ -2,14 +2,24 @@ using System;
 
 namespace Felli
 {
+    /// <summary>
+    /// <c>UserInterface</c> Class.
+    /// Contains all user interaction methods and prints.
+    /// </summary>
     public class UserInterface
     {
-        // Draws board, the outside box and paths are fixed while the
-        // playable spots can change every time the board is rendered.
+        /// <summary>
+        /// Draws board.
+        /// The outside box is fixed while the board paths, limits and
+        /// playable spots will be updated every time the board is rendered 
+        /// according to the <c>State</c>.
+        /// </summary>
+        /// <param name="b">Board that the program is using.</param>
         public void ShowBoard(Board b)
         {
             Console.WriteLine("\n|||||||||||||||||||||||||||||||||||");
             Console.WriteLine("||                               ||");
+            
             for (int i = 0; i < 9; i++)
             {
                 for (int j = 0; j < 9; j++)
@@ -19,6 +29,7 @@ namespace Felli
                         Console.Write("||  ");
                     }
 
+                    // Goes through each board position.
                     switch (b.GetState(new Position(i, j)))
                     {
                         // Playable Spots:
@@ -53,6 +64,7 @@ namespace Felli
                 Console.WriteLine("  ||");
                 Console.WriteLine("||                               ||");
 
+                // Last line of the box.
                 if (i == 8)
                 {
                     Console.WriteLine("|||||||||||||||||||||||||||||||||||\n");
@@ -61,8 +73,11 @@ namespace Felli
 
         }
 
-        // Asks the corresponding player and saves the position of 
-        // the piece they input 
+        /// <summary>
+        /// Asks player which piece he wants to "grab".
+        /// </summary>
+        /// <param name="playerTurn">State of current player.</param>
+        /// <returns>Integer value, first board position.</returns>
         public int PlayerPicks(State playerTurn)
         {
             string aux;
@@ -75,6 +90,13 @@ namespace Felli
             return move;
         }
 
+        /// <summary>
+        /// Asks player where he wants to move his piece.
+        /// </summary>
+        /// <param name="pos">Integer Board reference of the first piece (1-13).
+        /// </param>
+        /// <param name="playerTurn">State of current player.</param>
+        /// <returns>Integer value, second board position.</returns>
         public int PlayerMoves(int pos, State playerTurn)
         {
             string aux;
@@ -87,15 +109,23 @@ namespace Felli
             return move;
         }
 
-        // Renders the selected message to its origin
+        /// <summary>
+        /// Renders a console message.
+        /// </summary>
+        /// <param name="msg">String of what to render.</param>
         public void Message(string msg)
         {
             Console.WriteLine();
             Console.WriteLine(msg);
         }
 
+        /// <summary>
+        /// Introduction screen with program guidelines.
+        /// Waits for the player to input "S" to proceed.
+        /// </summary>
         public void Intro()
         {
+            // Introduction
             Console.WriteLine("\n");
             Console.WriteLine("||||||||||||||||||||||||||||||||||||||||||||||");
             Console.WriteLine("||                                          ||");
@@ -132,6 +162,7 @@ namespace Felli
             Console.WriteLine("||||||||||||||||||||||||||||||||||||||||||||||");
             Console.Write("\n||  Type S to start: ");
 
+            // Wait until user types "S"
             while (true)
             {
                 // Input variables
@@ -145,10 +176,16 @@ namespace Felli
             }
         }
 
+        /// <summary>
+        /// Current round information like who's playing and turn number.
+        /// </summary>
+        /// <param name="turn">Integer turn value.</param>
+        /// <param name="PlayerTurn">State of current player.</param>
         public void NewRoundMsg(int turn, State PlayerTurn)
         {
             Console.WriteLine("\n|||||||||||||||||||||||||||||||||||");
             Console.WriteLine("||              |||              ||");
+            
             // Fixes box misalignment when the turns go over one digits
             if (turn < 10) 
             {
@@ -163,22 +200,30 @@ namespace Felli
             Console.WriteLine("||              |||              ||");
             Console.WriteLine("|||||||||||||||||||||||||||||||||||");
         }
+        
+        /// <summary>
+        /// Asks players which color they want to play as and who is going 
+        /// first. 
+        /// </summary>
+        /// <returns>Integer value, represents initial turn.</returns>
         public int GetTurn()
         {
-
             while (true)
             {
+                // Ask [Player 1] which color they want.
                 Console.Write("\n\n");
                 Console.Write("||  [Player 1], pick a color to " + 
                 "play as (B/W): ");
                 string aux1 = Console.ReadLine();
                 string player1 = aux1.ToUpper();
 
+                // Ask both Players who is going first.
                 Console.Write("\n||  [Player 1/2], " + 
                 "which of you is going first? (P1/P2): ");
                 string aux2 = Console.ReadLine();
                 string answer = aux2.ToUpper();
 
+                // Setting first turn.
                 if (player1 == "B" && answer == "P2" ||
                     player1 == "W" && answer == "P1")
                 {
@@ -213,6 +258,7 @@ namespace Felli
                     return 1;
                 }
 
+                // Error message.
                 else
                 {
                     Console.WriteLine("\n||  At least one of those inputs is " +
@@ -220,6 +266,12 @@ namespace Felli
                 }
             }
         }
+        
+        /// <summary>
+        /// Renders winner's box.
+        /// </summary>
+        /// <param name="Winner">State of winning player.</param>
+        /// <param name="turns">Integer turn value.</param>
         public void WinBox(State Winner, int turns)
         {
             Console.WriteLine("\n|||||||||||||||||||||||||||||||||||");
